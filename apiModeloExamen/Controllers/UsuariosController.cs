@@ -41,21 +41,15 @@ namespace apiModeloExamen.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto login)
         {
-            var result = await _repo.LoginAsync(login.Email, login.PasswordHash);
-            if (result == null)
-                return Unauthorized(new
-                {
-                    mensaje = "Credenciales incorrectas"
-                });
+            var usuario = await _repo.LoginAsync(login.Email, login.PasswordHash);
+
+            if (usuario == null)
+                return Unauthorized(new { mensaje = "Email o contraseña incorrectos" });
+
             return Ok(new
             {
                 mensaje = "Login exitoso",
-                usuario = new
-                {
-                    result.IdUsuario,
-                    result.Nombre,
-                    result.Email
-                }
+                usuario
             });
         }
     }
