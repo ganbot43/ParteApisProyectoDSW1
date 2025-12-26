@@ -1,4 +1,5 @@
-﻿using apiModeloExamen.Repositories.Interfaces;
+﻿using apiModeloExamen.Contracts.Dtos;
+using apiModeloExamen.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,6 +28,17 @@ namespace apiModeloExamen.Controllers
         {
             var ordenes = await _repo.ListarPorUsuarioAsync(idUsuario);
             return Ok(ordenes);
+        }
+
+        // GET: api/Orden/detalle/{idOrden}
+        [HttpGet("detalle/{idOrden}")]
+        public async Task<ActionResult<List<PagoDetalladoDto>>> GetDetalleOrden(int idOrden)
+        {
+            var detalle = await _repo.ObtenerDetalleOrdenAsync(idOrden);
+            if (detalle == null || !detalle.Any())
+                return NotFound($"No se encontró detalle para la orden {idOrden}.");
+
+            return Ok(detalle);
         }
     }
 }

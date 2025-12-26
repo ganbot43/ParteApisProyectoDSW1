@@ -1,4 +1,5 @@
 ﻿using apiModeloExamen.Contracts.Entities;
+using apiModeloExamen.Contracts.Dtos;
 using apiModeloExamen.Repositories.Interfaces;
 using Microsoft.Data.SqlClient;
 using System.Data;
@@ -30,6 +31,18 @@ namespace apiModeloExamen.Repositories
                 "sp_Orden_ListarPorUsuario",
                 new { IdUsuario = idUsuario },
                 commandType: CommandType.StoredProcedure);
+        }
+
+        public async Task<List<PagoDetalladoDto>> ObtenerDetalleOrdenAsync(int idOrden)
+        {
+            using var conn = new SqlConnection(_connectionString);
+            var productos = (await conn.QueryAsync<PagoDetalladoDto>(
+                "sp_Orden_ObtenerDetalle",
+                new { IdOrden = idOrden },
+                commandType: System.Data.CommandType.StoredProcedure
+            )).ToList();
+
+            return productos;
         }
     }
 }

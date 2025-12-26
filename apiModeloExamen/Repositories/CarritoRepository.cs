@@ -40,5 +40,14 @@ namespace apiModeloExamen.Repositories
                 new { IdCarrito = idCarrito },
                 commandType: CommandType.StoredProcedure);
         }
+
+        public async Task EliminarProductoAsync(int idCarrito, int idProducto)
+        {
+            using var conn = new SqlConnection(_connectionString);
+            await conn.ExecuteAsync(
+                "sp_Carrito_EliminarProducto",
+                new { IdCarrito = idCarrito, IdProducto = idProducto },
+                commandType: CommandType.StoredProcedure);
+        }
     }
 }

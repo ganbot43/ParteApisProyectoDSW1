@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("apiModeloExamen")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b248c0f32d0358f1273ca687105e59262b48f71")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cfeab8b1981664e6ca50e3679757392a74c68ea6")]
 [assembly: System.Reflection.AssemblyProductAttribute("apiModeloExamen")]
 [assembly: System.Reflection.AssemblyTitleAttribute("apiModeloExamen")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -7,5 +7,6 @@ namespace apiModeloExamen.Repositories.Interfaces
         Task<int> ObtenerCarritoActivoAsync(int idUsuario);
         Task AgregarProductoAsync(int idCarrito, int idProducto, int cantidad);
         Task<IEnumerable<CarritoDetalle>> VerCarritoAsync(int idCarrito);
+        Task EliminarProductoAsync(int idCarrito, int idProducto);
     }
 }

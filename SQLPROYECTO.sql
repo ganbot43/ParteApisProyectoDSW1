@@ -84,8 +84,6 @@ CREATE TABLE Pago (
 );
 GO
 
-
---Arreglos de UNIQUE
 ALTER TABLE Carrito
 DROP CONSTRAINT UQ_Carrito;
 GO

@@ -32,5 +32,12 @@ namespace apiModeloExamen.Controllers
             await _repo.EditarAsync(producto);
             return NoContent();
         }
+
+        [HttpGet("buscar")]
+        public async Task<ActionResult<IEnumerable<Producto>>> BuscarPorNombre([FromQuery] string nombre)
+        {
+            var productos = await _repo.BuscarPorNombreAsync(nombre);
+            return Ok(productos);
+        }
     }
 }

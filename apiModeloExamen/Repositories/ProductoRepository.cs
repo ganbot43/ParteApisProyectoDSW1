@@ -49,5 +49,16 @@ namespace Repositories
                 new { producto.IdProducto, producto.Nombre, producto.Descripcion, producto.Precio, producto.Stock, producto.IdCategoria, producto.Activo },
                 commandType: CommandType.StoredProcedure);
         }
+
+        public async Task<IEnumerable<Producto>> BuscarPorNombreAsync(string nombre)
+        {
+            using var conn = new SqlConnection(_connectionString);
+            var productos = await conn.QueryAsync<Producto>(
+                "sp_Producto_BuscarPorNombre",
+                new { Nombre = nombre },
+                commandType: System.Data.CommandType.StoredProcedure
+            );
+            return productos;
+        }
     }
 }

@@ -8,5 +8,6 @@ namespace apiModeloExamen.Repositories.Interfaces
         Task<IEnumerable<Producto>> ListarPorCategoriaAsync(int idCategoria);
         Task<int> InsertarAsync(Producto producto);
         Task EditarAsync(Producto producto);
+        Task<IEnumerable<Producto>> BuscarPorNombreAsync(string nombre);
     }
 }
